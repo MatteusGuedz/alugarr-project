@@ -1,5 +1,6 @@
 
 const Booking = require("../models/Booking");
+const User = require("../models/User");
 
 module.exports = {
      async store(req,res){
@@ -13,9 +14,9 @@ module.exports = {
             imovel: imovel_id,
             date,
         })
-
-        await booking.populate("imovel").populate("user").execPopulate();
-//arrumar esse parte ultiima coisa do video
+            
+        await booking.populate("user").populate("imovel").execPopulate();
+ 
         return res.json(booking)
      }
  
